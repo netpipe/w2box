@@ -12,7 +12,7 @@ $config = Array();
 // title of your w2box
 $config['w2box_title'] = "NETPIPE's DataBox";
 // path to the storage directory
-$config['storage_path'] = "data";
+$config['storage_path'] = "images";
 // maximum allowed file size in megabytes.
 $config['max_filesize'] = 50; // MBytes
 // allowed file type

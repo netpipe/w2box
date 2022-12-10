@@ -2,7 +2,7 @@
 /* 
   w2box: web 2.0 File Repository v4.0 Beta5
   
-  (c) 2005-2007, Clément Beffa
+  (c) 2005-2007, Clï¿½ment Beffa
   http://labs.beffa.org/w2box/
  
   Licence:
@@ -10,8 +10,8 @@
   http://creativecommons.org/licenses/by-nc-sa/3.0/
  
   You are free:
-    * to Share — to copy, distribute and transmit the work
-    * to Remix — to adapt the work
+    * to Share ï¿½ to copy, distribute and transmit the work
+    * to Remix ï¿½ to adapt the work
 
   Under the following conditions:
     * Attribution. You must attribute the work in the manner specified by the author or
@@ -32,9 +32,8 @@
 //
 // you should edit config.php (and upload.cgi) in order to configure this script.
 require("config.php");
-
-$dir = (isset($_GET['d']))?$_GET['d']:$_POST['d'];
-sizeof($dir);
+$dir = (isset($_GET['d']))?$_GET['d']:isset($_POST['d']);
+sizeof([$dir]);
 if ($dir && $config['enable_folder_maxdepth']){
 	$dir = split("/",$dir);
 	foreach ($dir as $k => $v) {
@@ -348,18 +347,19 @@ function getfilesize($size) {
 
 function return_bytes($val) {
 	$val = trim($val);
-	if (empty($val)) return pow(1024,3);
-	$last = strtolower($val[(strlen($val)-1)]);
+	$intval = intval(trim($val));
+	if (empty($intval)) return pow(1024,3);
+	$last = strtolower($val[(strlen($intval)-1)]);
 	switch($last) {
 		// The 'G' modifier is available since PHP 5.1.0
 		case 'g':
-		$val *= 1024;
+		$intval *= 1024;
 		case 'm':
-		$val *= 1024;
+		$intval *= 1024;
 		case 'k':
-		$val *= 1024;
+		$intval *= 1024;
 	}
-	return $val;
+	return $intval;
 }
 
 function rooturl(){
@@ -389,6 +389,7 @@ function ls($dir) {
 	}
 
 	$files = Array();
+	echo $dir;
 	if ($handle = opendir($dir)) {
 		while (false !== ($file = readdir($handle))) {
 			if (substr($file,0,1) != "." && $file != "index.html") {
@@ -427,7 +428,7 @@ function ls($dir) {
   <title><?php echo $config['w2box_title']; ?> | powered by w2box</title>
   <link rel="stylesheet" type="text/css" href="<?php echo rooturl(); ?>w2box.css" />
   <script type="text/javascript">
-  <!--//<![CDATA[
+  //<![CDATA[
   var ROOT_URL = '<?php echo rooturl(); ?>';
   var ALLOWED_TYPES = '.<?php echo join(".",$config['allowed_ext']); ?>.';
   var MAX_FILESIZE = <?php echo $max_filesize; ?>;
@@ -482,7 +483,8 @@ if (!($config['hide_upload']) || $auth) { ?>
 <?php } ?>
 
 <?php 
-if (sizeof($dir)>0) {
+global $dir;
+if ($dir>0) {
 	echo '<div id="dirpath"><p>';
 	$path = rooturl();
 	echo '<a href="'.$path.'">w2box</a>';
