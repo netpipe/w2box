@@ -68,8 +68,8 @@ ini_set('memory_limit','500M');
 //find real max_filesize
 $max_filesize = $config['max_filesize'] * pow(1024,2);
 
-if (!$config['upload_progressbar']) //doesn't apply with the perl script
-	$max_filesize = min(return_bytes(ini_get('post_max_size')),return_bytes(ini_get('upload_max_filesize')),return_bytes(ini_get('memory_limit')),$max_filesize);
+//if (!$config['upload_progressbar']) //doesn't apply with the perl script
+//	$max_filesize = min(return_bytes(ini_get('post_max_size')),return_bytes(ini_get('upload_max_filesize')),return_bytes(ini_get('memory_limit')),$max_filesize);
 
 
 	
