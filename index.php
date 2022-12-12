@@ -235,7 +235,7 @@ function uploadfile($file) {
 		chmod ($filedest, 0755);
 		if ($config['log_upload']) logadm($lang['UPLOAD'].' '.$filedest);
 		$loc = rooturl();
-		if (sizeof($dir)>0) $loc .= join("/",$dir)."/";
+		if (filesize($dir)>0) $loc .= join("/",$dir)."/";
 		Header("Location: ".$loc);
 		exit;
 	}
@@ -253,7 +253,7 @@ if (isset ($_POST['dir'])) {
 			else {
 				if (mkdir($newdir)) {
 					$loc = rooturl();
-					if (sizeof($dir)>0) $loc .= join("/",$dir)."/";
+					if (filesize($dir)>0) $loc .= join("/",$dir)."/";
 					Header("Location: ".$loc);
 					exit;
 				} else
@@ -373,9 +373,9 @@ function logadm($str) {
 	global $config, $lang;
 	if (!$config['log']) return;
 
-	$file_handle = fopen($config['log_filename'],"a+");
-	fwrite($file_handle, date("Y-m-d\TH:i:s").' '.sprintf("%15s",$_SERVER["REMOTE_ADDR"]).' '. $str."\n");
-	fclose($file_handle);
+	//$file_handle = fopen($config['log_filename'],"a+");
+	//fwrite($file_handle, date("Y-m-d\TH:i:s").' '.sprintf("%15s",$_SERVER["REMOTE_ADDR"]).' '. $str."\n");
+	//fclose($file_handle);
 }
 
 function ls($dir) {
