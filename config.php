@@ -51,7 +51,7 @@ $config['upload_tmpdir']="tmp";
 // the bottom of the page.
 // 
 // if true, activate admin authentication
-$config['admin_actived'] = true;
+$config['admin_actived'] = false;
 // admin username
 $config['admin_username'] = "admin";
 // admin password
@@ -63,7 +63,7 @@ $config['hide_upload'] = false;
 // if true, allow delete only for admin
 $config['protect_delete'] = true;
 // if true, show delete feature only for admin
-$config['hide_delete'] = true;
+$config['hide_delete'] = false;
 // if true, allow make dir only for admin
 $config['protect_makedir'] = false;
 // if true, show make dir feature only for admin

@@ -454,6 +454,7 @@ if (isset($errormsg)) echo '<div id="errormsg"><p>'.$errormsg.'</p></div>'."\n";
 
 if ($config['enable_folder_maxdepth'] && (!($config['hide_makedir']) || $auth)) { ?>
 <div id="makedirform" class="formdiv">
+<?php if ($config['protect_delete']) echo "<h3>admin can only delete files</h3>" ?> 
 <form method="post" action="">
  <p><label for="dir"><?php echo $lang['dir'] ?> :</label><input type="text" id="dir" name="dir" size="50" /><input id="make" type="submit" value="<?php echo $lang['make'] ?>" class="button" /></p>
  </form>
