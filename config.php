@@ -24,7 +24,7 @@ $config['disable_directlink'] = false;
 // if true, allow upload to overwrite file that exist
 $config['allow_overwrite'] = false;
 // if true, ask confirmation before deletion
-$config['confirm_delete'] = false;
+$config['confirm_delete'] = true;
 // if true, show a warning msg at the top
 // you can edit the warning msg at the end 
 // of this file ($lang['warning_msg'])
@@ -51,23 +51,23 @@ $config['upload_tmpdir']="tmp";
 // the bottom of the page.
 // 
 // if true, activate admin authentication
-$config['admin_actived'] = false;
+$config['admin_actived'] = true;
 // admin username
 $config['admin_username'] = "admin";
 // admin password
 $config['admin_password'] = "w2pass";
 // if true, allow upload only for admin
-$config['protect_upload'] = true;
+$config['protect_upload'] = false;
 // if true, show upload feature only for admin
-$config['hide_upload'] = true;
+$config['hide_upload'] = false;
 // if true, allow delete only for admin
 $config['protect_delete'] = true;
 // if true, show delete feature only for admin
 $config['hide_delete'] = true;
 // if true, allow make dir only for admin
-$config['protect_makedir'] = true;
+$config['protect_makedir'] = false;
 // if true, show make dir feature only for admin
-$config['hide_makedir'] = true;
+$config['hide_makedir'] = false;
 
 
 //--- activity logging --
